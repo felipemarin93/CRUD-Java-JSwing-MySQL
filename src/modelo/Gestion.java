@@ -66,10 +66,10 @@ public class Gestion implements InterfaceGestion{
     }
     
     @Override
-    public boolean eliminarPorDocumento(String nit) {
+    public boolean eliminarPorNit(String nit) {
          boolean resultado = false;
          conn = new Conexion();
-         String sql = "DELETE FROM proveedor WHERE nit=?";         
+        String sql = "DELETE FROM proveedor WHERE nit=?";         
         try {
             pStm = conn.getCon().prepareStatement(sql);
             pStm.setString(1, nit);
@@ -79,8 +79,22 @@ public class Gestion implements InterfaceGestion{
             Mensaje.mensajeError("Error", ex.getMessage());
         }
          return resultado;
-    }    
+    }  
     
+    public boolean editarPorNit(String nit) {
+         boolean resultado = false;
+         conn = new Conexion();
+        String sql = "Update FROM proveedor WHERE nit=?";         
+        try {
+            pStm = conn.getCon().prepareStatement(sql);
+            pStm.setString(1, nit);
+            //pStm.executeUpdate();
+            resultado = true;
+        } catch (SQLException ex) {
+            Mensaje.mensajeError("Error", ex.getMessage());
+        }
+         return resultado;
+    }
     
     
 }

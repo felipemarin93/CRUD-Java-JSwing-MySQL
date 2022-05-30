@@ -75,6 +75,21 @@ public class FormularioPrincipal extends javax.swing.JFrame {
             }
         }
     }
+    
+    private void editarPorNit(){
+        
+      
+        boolean confirmado = Mensaje.mensajeConfirm("Editar", "¿Quieres editarlo?");
+        if(confirmado){
+            String cedula = (String)tbProveedor.getValueAt(tbProveedor.getSelectedRow(), 0);
+            boolean esEliminado = ctrl.eliminar(cedula.trim());
+            if(esEliminado){
+                Mensaje.mensajeInfo("Editar", "Ahora puedes editar los campos del Nit Seleccionado");
+                switchHabilitar(true);
+                
+            }
+        }
+    }
 
             
       @SuppressWarnings("unchecked")
@@ -104,6 +119,7 @@ public class FormularioPrincipal extends javax.swing.JFrame {
         btnSalir = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnCerrarSesion = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(250, 50));
@@ -168,7 +184,7 @@ public class FormularioPrincipal extends javax.swing.JFrame {
             }
         });
 
-        btnActualizar.setText("Actualizar");
+        btnActualizar.setText("Consultar");
         btnActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnActualizarActionPerformed(evt);
@@ -215,6 +231,13 @@ public class FormularioPrincipal extends javax.swing.JFrame {
             }
         });
 
+        btnEditar.setText("Editar");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
         jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
         jInternalFrame1Layout.setHorizontalGroup(
@@ -224,9 +247,11 @@ public class FormularioPrincipal extends javax.swing.JFrame {
                 .addComponent(btnEliminar)
                 .addGap(18, 18, 18)
                 .addComponent(btnActualizar)
-                .addGap(135, 135, 135)
+                .addGap(18, 18, 18)
+                .addComponent(btnEditar)
+                .addGap(138, 138, 138)
                 .addComponent(btnSalir)
-                .addGap(138, 138, 138))
+                .addGap(20, 20, 20))
             .addGroup(jInternalFrame1Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -247,7 +272,7 @@ public class FormularioPrincipal extends javax.swing.JFrame {
                             .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(91, 91, 91)
+                        .addGap(88, 88, 88)
                         .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnGuardar)
                             .addComponent(btnNuevo)))
@@ -312,8 +337,9 @@ public class FormularioPrincipal extends javax.swing.JFrame {
                 .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(132, Short.MAX_VALUE))
+                    .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(224, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -396,6 +422,10 @@ public class FormularioPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNitActionPerformed
 
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+                editarPorNit();
+    }//GEN-LAST:event_btnEditarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -434,6 +464,7 @@ public class FormularioPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnCerrarSesion;
+    private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnNuevo;

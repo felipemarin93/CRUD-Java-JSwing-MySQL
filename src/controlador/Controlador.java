@@ -12,7 +12,7 @@ public class Controlador {
     public DefaultTableModel listar(){
         DefaultTableModel modelo = new DefaultTableModel();
         gestion = new Gestion();
-        List<Proveedor> usuarios = new ArrayList<>();
+        List<Proveedor> proveedores = new ArrayList<>();
         modelo = new DefaultTableModel(){
           @Override
           public boolean isCellEditable(int row, int column){
@@ -26,9 +26,9 @@ public class Controlador {
        
         
         
-        usuarios = gestion.consultar();
+        proveedores = gestion.consultar();
         String registros[] = new String[4];
-        for(Proveedor us:usuarios){
+        for(Proveedor us:proveedores){
             registros[0] = us.getNit();
             registros[1] = us.getNombre();
             registros[2] = us.getDireccion();
@@ -49,9 +49,17 @@ public class Controlador {
     public boolean eliminar(String nit){
         boolean res = false;
         gestion = new Gestion();
-        res = gestion.eliminarPorDocumento(nit);
+        res = gestion.eliminarPorNit(nit);
         return res;
     }
     
+    public boolean editar(String nit){
+        boolean res = false;
+        gestion = new Gestion();
+        res = gestion.eliminarPorNit(nit);
+        return res;
+    }
+    
+ 
  
 }

@@ -8,5 +8,9 @@ public interface InterfaceGestion {
     
     public int guardar(Proveedor usuario);
     
-    public boolean eliminarPorDocumento(String documento);
+    public boolean eliminarPorNit(String nit);
+    
+    public boolean editarPorNit(String nit);
+    
+ 
 }
